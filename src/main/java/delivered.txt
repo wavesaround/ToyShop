@@ -1,0 +1,5 @@
+Bear: ID=31, class='SoftToy', probability=100, amount=-1, manufacture='China', state='new'
+Horse: ID=31, class='SoftToy', probability=95, amount=-1, manufacture='China', state='new'
+Rabbit: ID=31, class='SoftToy', probability=97, amount=30, manufacture='China', state='new'
+Cow: ID=31, class='SoftToy', probability=98, amount=30, manufacture='China', state='new'
+Bear: ID=31, class='SoftToy', probability=100, amount=30, manufacture='China', state='new'
