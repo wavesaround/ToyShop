@@ -1,6 +1,8 @@
 import Toys.SoftToy;
 import Toys.Toy;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -16,8 +18,11 @@ public class Main {
         user_input.nextLine();
 
         store = newStore(SIZE);
-        giveAway(mostPossible(store, 30));
 
+        for (int i = 0; i < 11; i++) {
+            giveAway(mostPossible(store, 30));
+        }
+        releaseToy(giveAwayStock);
 
     }
 
@@ -53,7 +58,25 @@ public class Main {
         System.out.println("Розыгрыш прошел успешно");
     }
 
+    public static void releaseToy(ArrayList<Toy> toys) {
+        if (!toys.isEmpty()) {
+            Toy item = toys.get(0);
+            toys.remove(0);
+            try(FileWriter writer = new FileWriter("src/main/java/" +
+                    "delivered.txt", true))
+            {
+                String text = item + "\n";
+                writer.write(text);
+                writer.flush();
 
+                System.out.println("Данные записаны");
+            }
+            catch(IOException ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+        else return;
+    }
 
 
 }

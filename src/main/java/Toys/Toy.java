@@ -4,13 +4,15 @@ public abstract class Toy {
 
     protected static int id = 0;
     protected String name;
+    protected int amount;
     protected int probability;
     protected String state;
     protected String manufacture;
 
-    public Toy(String name, int probability) {
+    public Toy(String name, int amount, int probability) {
         Toy.id++;
         this.name = name;
+        this.amount = amount;
         this.probability = probability;
         manufacture = "China";
         state = "new";
@@ -19,8 +21,10 @@ public abstract class Toy {
     @Override
     public String toString() {
         return name + ':' +
-                " class='" + this.getClass().getSimpleName() + '\'' +
+                " ID=" + id +
+                ", class='" + this.getClass().getSimpleName() + '\'' +
                 ", probability=" + probability +
+                ", amount=" + amount +
                 ", manufacture='" + manufacture + '\'' +
                 ", state='" + state + '\''
                 ;
@@ -34,4 +38,7 @@ public abstract class Toy {
         this.probability = probability;
     }
 
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 }
