@@ -9,8 +9,8 @@ public class SoftToy extends Toy{
         this.amount = amount;
     }
 
-    public void giveAway(int number) {
-        --this.amount;
+    public void consumption(int number) {
+        this.amount -= number;
     }
 
 }

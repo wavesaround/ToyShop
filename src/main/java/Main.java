@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Main {
     static final int SIZE = 30;
     public static ArrayList<Toy> store = new ArrayList<>();
+    public static ArrayList<Toy> giveAwayStock = new ArrayList<>();
 
     public static void main(String[] args) {
         Scanner user_input = new Scanner(System.in);
@@ -15,7 +16,9 @@ public class Main {
         user_input.nextLine();
 
         store = newStore(SIZE);
-        System.out.println(store);
+        giveAway(mostPossible(store, 30));
+
+
     }
 
     public static ArrayList<Toy> newStore(int size) {
@@ -31,6 +34,26 @@ public class Main {
         Random rand = new Random();
         return String.valueOf(Names.values()[rand.nextInt(Names.values().length -1)]);
     }
+
+    public static int mostPossible(ArrayList<Toy> source, int minPercent) {
+        int minProbability = minPercent;
+        int win_idx = 0;
+        for (Toy toy:source) {
+            if (toy.getProbability() > minProbability) {
+                win_idx = source.indexOf(toy);
+                minProbability = toy.getProbability();
+            }
+        }
+        return win_idx;
+    }
+
+    public static void giveAway(int win_idx) {
+        giveAwayStock.add(store.get(win_idx));
+        store.removeAll(giveAwayStock);
+        System.out.println("Розыгрыш прошел успешно");
+    }
+
+
 
 
 }
