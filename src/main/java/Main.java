@@ -8,29 +8,28 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    static final int SIZE = 30;
+    static final int SIZE = 3;
     public static ArrayList<Toy> store = new ArrayList<>();
     public static ArrayList<Toy> giveAwayStock = new ArrayList<>();
 
     public static void main(String[] args) {
-        Scanner user_input = new Scanner(System.in);
-        System.out.println("Press Enter for New Store");
-        user_input.nextLine();
 
-        store = newStore(SIZE);
+        store = newStore(SIZE);                             // создаем магазин из SIZE игрушек
 
-        for (int i = 0; i < 11; i++) {
-            giveAway(mostPossible(store, 30));
-        }
-        releaseToy(giveAwayStock);
+        giveAway(mostPossible(store, 30));       // разыгрываем одну игрушку с минимальным % веса
+
+        releaseToy(giveAwayStock);                         // отдаем игрушку победителю и записываем в файл
 
     }
 
     public static ArrayList<Toy> newStore(int size) {
         ArrayList<Toy> store = new ArrayList<>();
-
+        Scanner user_input = new Scanner(System.in);
         for (int i = 0; i < size + 1; i++) {
-            store.add(new SoftToy(getName(), 30, new Random().nextInt(30,101)));
+            System.out.println("Пожалуйста, введите параметры (3) новой игрушки через пробел");
+            String newToy = user_input.nextLine();
+            String[] options = newToy.split(" ");
+            store.add(new SoftToy(options[0], Integer.parseInt(options[1]), Integer.parseInt(options[2])));
         }
         return store;
     }
@@ -53,9 +52,12 @@ public class Main {
     }
 
     public static void giveAway(int win_idx) {
-        giveAwayStock.add(store.get(win_idx));
-        store.removeAll(giveAwayStock);
-        System.out.println("Розыгрыш прошел успешно");
+        if (!store.isEmpty()) {
+            giveAwayStock.add(store.get(win_idx));
+            store.removeAll(giveAwayStock);
+            System.out.println("Розыгрыш прошел успешно");
+        }
+        else System.out.println("В магазине больше нет игрушек");
     }
 
     public static void releaseToy(ArrayList<Toy> toys) {
@@ -75,7 +77,7 @@ public class Main {
                 System.out.println(ex.getMessage());
             }
         }
-        else return;
+        else System.out.println("Список пуст");
     }
 
 

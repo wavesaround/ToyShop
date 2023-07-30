@@ -3,3 +3,8 @@ Horse: ID=31, class='SoftToy', probability=95, amount=-1, manufacture='China', s
 Rabbit: ID=31, class='SoftToy', probability=97, amount=30, manufacture='China', state='new'
 Cow: ID=31, class='SoftToy', probability=98, amount=30, manufacture='China', state='new'
 Bear: ID=31, class='SoftToy', probability=100, amount=30, manufacture='China', state='new'
+Pig: ID=31, class='SoftToy', probability=100, amount=30, manufacture='China', state='new'
+Rabbit: ID=31, class='SoftToy', probability=100, amount=30, manufacture='China', state='new'
+Panda: ID=31, class='SoftToy', probability=100, amount=30, manufacture='China', state='new'
+Pig: ID=31, class='SoftToy', probability=93, amount=30, manufacture='China', state='new'
+Monkey: ID=2, class='SoftToy', probability=70, amount=100, manufacture='China', state='new'
